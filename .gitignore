@@ -1,0 +1,110 @@
+# ============================================================
+#  vidrelay — .gitignore
+#  这个文件必须在写任何业务代码之前就位。
+#  原则：默认拒绝（deny by default），只显式放行需要的文件。
+# ============================================================
+
+# ---------- 1. 凭证与密钥（最高优先级，任何情况下不得入库）----------
+secrets/
+.env
+.env.*
+!.env.example
+*.token
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+client_secret*.json
+token.json
+refresh_token*
+cookies/
+**/cookies/
+*.cookie
+
+# ---------- 2. 运行产物（含发布链接、账号名，属私密信息）----------
+runs/
+logs/
+*.log
+report*.json
+publish-report*.json
+
+# ---------- 3. 真实配置（含本地视频路径、账号名）----------
+config/
+!config/.gitkeep
+meta.yaml
+meta.*.yaml
+!meta.example.yaml
+
+# ---------- 4. Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ---------- 5. 虚拟环境 ----------
+.venv/
+venv/
+ENV/
+env/
+.python-version
+
+# ---------- 6. 测试与工具缓存 ----------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# ---------- 7. 编辑器与系统 ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- 8. 视频与媒体素材 ----------
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.flv
+*.wmv
+*.webm
+*.m4v
+*.srt
+*.ass
+
+# ---------- 9. 本地临时文件 ----------
+*.tmp
+*.bak
+*.orig
+*.rej
+tmp/
+temp/
+scratch/

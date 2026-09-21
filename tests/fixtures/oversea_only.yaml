@@ -1,0 +1,8 @@
+# 只声明了一个海外平台。用来验证「--platform 指定了 meta 里没有的平台」会被拦下。
+
+video: "D:/videos/ep01.mp4"
+
+platforms:
+  youtube:
+    title: "Only YouTube here"
+    privacy: "unlisted"

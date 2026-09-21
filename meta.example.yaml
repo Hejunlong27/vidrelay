@@ -1,0 +1,88 @@
+# ============================================================
+#  vidrelay — meta.yaml 示例
+#
+#  复制到 config/ 下使用（config/ 已被 .gitignore 忽略，
+#  因为真实文件里会有本地视频路径和账号名）。
+#
+#  校验：vidrelay validate meta.yaml
+#  发布：vidrelay publish meta.yaml --group oversea --dry-run
+# ============================================================
+
+# 视频文件路径（必填）。原版直发，vidrelay 不做任何转码或剪辑。
+video: "D:/videos/ep01.mp4"
+
+# 封面（可选）。不填则由平台自行抽帧。
+cover: "D:/videos/ep01_cover.jpg"
+
+common:
+  # 定时发布时间。建议写 ISO 8601 + 时区偏移量。
+  # 不要写裸本地时间——跨时区与夏令时会出错。
+  publish_at: "2026-09-22T09:30+08:00"
+
+  # 时区名（用于换算与日志展示）。写时区名而不是偏移量，
+  # 这样美国夏令时结束后不需要改配置。
+  timezone: "Asia/Shanghai"
+
+  # 账号标识。对应 secrets/cookies/<platform>_<account>.json
+  account: "default"
+
+platforms:
+
+  # ---------------- 国内组：必须国内直连，完全断开 VPN ----------------
+  douyin:
+    title: "3 步搞定多平台分发"          # 必填
+    desc: "一条视频发 6 个平台，再也不用重复操作。"
+    tags: ["自媒体", "效率工具", "短视频运营"]
+    schedule: true                        # false 则忽略 common.publish_at，立即发布
+    # product_link: "https://..."         # 可选，带货链接
+
+  kuaishou:
+    title: "多平台分发其实很简单"
+    desc: "分享一个我自己在用的方法。"
+    tags: ["自媒体", "干货分享"]
+    schedule: true
+
+  bilibili:
+    tid: 27                               # 必填：分区 ID。27 = 综合
+    title: "【教程】一条视频自动分发到 6 个平台"
+    desc: "00:00 背景 / 01:20 方案 / 05:40 实操"
+    tags: ["教程", "自动化", "自媒体"]
+    schedule: true
+    # copyright: 1                        # 1 = 自制（默认）
+
+  # ---------------- 海外组：需要海外出口 IP ----------------
+  tiktok:
+    title: "Publish once, post everywhere"
+    desc: "One video, six platforms, zero copy-paste."
+    tags: ["creatortips", "automation", "workflow"]
+    privacy: "public"                     # public / unlisted / private
+
+  youtube:
+    title: "Publish One Video to 6 Platforms Automatically"
+    desc: "A contract-driven pipeline for multi-platform publishing."
+    tags: ["automation", "creator tools", "workflow", "tutorial"]
+    category: 24                          # 24 = Entertainment
+    privacy: "public"                     # public / unlisted / private
+    # playlist: "PLxxxxxxxxxxxx"          # 可选
+    # short: true                         # 标记为 Short（标题建议带 #Shorts）
+
+  dailymotion:
+    title: "Multi-Platform Video Publishing Workflow"
+    desc: "One video, six platforms."
+    tags: ["automation", "creator", "workflow", "video"]
+    channel: "tech"                       # 可选
+    privacy: "public"                     # public / private
+
+# ------------------------------------------------------------
+#  国内组与海外组的网络要求是互斥的，必须分两次执行：
+#
+#    # 1) 断开 VPN
+#    vidrelay netcheck
+#    vidrelay publish meta.yaml --group cn
+#
+#    # 2) 连上海外节点
+#    vidrelay netcheck
+#    vidrelay publish meta.yaml --group oversea
+#
+#  试图在同一个命令里同时跑两组会被直接拒绝。
+# ------------------------------------------------------------

@@ -1,0 +1,30 @@
+# 故意写错：youtube 缺 title（必填），bilibili 缺 tid（必填），
+# 外加一个未知平台、一个未知字段、一个没有时区的 publish_at。
+# 用来验证校验器能否报出「准确的行号与字段名」。
+
+video: "D:/videos/ep01.mp4"
+
+common:
+  publish_at: "2026-09-22T09:30"
+
+platforms:
+  douyin:
+    title: "正常的一条"
+    desc: "这条没问题"
+    tags: ["a", "b"]
+
+  bilibili:
+    title: "缺 tid"
+    desc: "分区 ID 是必填的"
+
+  youtube:
+    desc: "没有 title"
+    tags: ["x"]
+    privacy: "friends"
+
+  weibo:
+    title: "不支持的平台"
+
+  dailymotion:
+    title: "带未知字段"
+    typo_field: "写错了"

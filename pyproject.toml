@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vidrelay"
+version = "0.1.0"
+description = "One video in, many platforms out — a contract-driven CLI that publishes a single video to Douyin, Kuaishou, Bilibili, TikTok, YouTube and Dailymotion."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "vidrelay contributors" }]
+keywords = ["video", "publishing", "automation", "douyin", "bilibili", "tiktok", "youtube", "dailymotion"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Internet",
+]
+
+dependencies = [
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+# 平台执行引擎按需安装，核心包保持零重依赖
+cn = ["playwright>=1.40"]          # 抖音 / 快手 / B站 浏览器自动化
+dev = ["pytest>=8.0", "pytest-cov>=5.0"]
+
+[project.scripts]
+vidrelay = "vidrelay.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/your-name/vidrelay"
+Issues = "https://github.com/your-name/vidrelay/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

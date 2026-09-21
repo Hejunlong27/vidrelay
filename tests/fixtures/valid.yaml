@@ -1,0 +1,51 @@
+# 示例：一条视频，6 个平台的适配结果
+# 真实使用时可复制到 config/ 下（该目录已被 .gitignore 忽略）
+
+video: "D:/videos/ep01.mp4"
+cover: "D:/videos/ep01_cover.jpg"
+
+common:
+  publish_at: "2026-09-22T09:30+08:00"
+  timezone: "Asia/Shanghai"
+  account: "default"
+
+platforms:
+  douyin:
+    title: "3 步搞定多平台分发"
+    desc: "一条视频发 6 个平台，再也不用重复操作。"
+    tags: ["自媒体", "效率工具", "短视频运营"]
+    schedule: true
+
+  kuaishou:
+    title: "多平台分发其实很简单"
+    desc: "分享一个我自己在用的方法。"
+    tags: ["自媒体", "干货分享"]
+    schedule: true
+
+  bilibili:
+    tid: 27
+    title: "【教程】一条视频自动分发到 6 个平台"
+    desc: "00:00 背景 / 01:20 方案 / 05:40 实操"
+    tags: ["教程", "自动化", "自媒体"]
+    schedule: true
+
+  tiktok:
+    title: "Publish once, post everywhere"
+    desc: "One video, six platforms, zero copy-paste."
+    tags: ["creatortips", "automation", "workflow"]
+    privacy: "public"
+
+  youtube:
+    title: "Publish One Video to 6 Platforms Automatically"
+    desc: "A contract-driven pipeline for multi-platform publishing."
+    tags: ["automation", "creator tools", "workflow", "tutorial"]
+    category: 24
+    privacy: "public"
+    playlist: "PLxxxxxxxxxxxx"
+
+  dailymotion:
+    title: "Multi-Platform Video Publishing Workflow"
+    desc: "One video, six platforms."
+    tags: ["automation", "creator", "workflow", "video"]
+    channel: "tech"
+    privacy: "public"
